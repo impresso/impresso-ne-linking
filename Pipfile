@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+ipython = "*"
+jupyter = "*"
+
+[packages]
+py4j = "*"
+impresso-commons = {editable = true,git = "https://github.com/impresso/impresso-pycommons.git"}
+dask = {extras = ["complete"],version = "==1.1.5"}
+dask-k8 = {editable = true,git = "https://github.com/SeguinBe/dask_k8.git"}
+impresso-images = {editable = true,path = "./../impresso-images/impresso-pyimages"}
+pillow = "*"
+
+[requires]
+python_version = "3.6"

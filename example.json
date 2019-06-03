@@ -1,0 +1,37 @@
+{
+  "source": "s3://processed-canonical-data/ne_mentions/EXP/599.jsonl.bz2",
+  "system": "aidalight",
+  "cdt": "",
+  "ne_links": [
+    {
+      "mention_id": "EXP-1993-01-14-a-i0055@23:27",
+      "type": "Location",
+      "surface": "IRAK",
+      "entity_id" : "Iraq",
+      "entity_link": "https://en.wikipedia.org/wiki/Iraq"
+    }
+  ]
+}
+
+// confidences level ?
+{
+  "source": "s3://processed-canonical-data/ne_mentions/EXP/599.jsonl.bz2",
+  "kb": "wikipedia",
+  "sys_id": "aidalight",
+  "cdt": "2019-05-28 ...",
+  "sys_settings": "fullSettings",
+  "entities": [
+    {
+      "mention_id": "EXP-1993-01-14-a-i0055@23:27",
+      "type": "Location",
+      "surface": "IRAK",
+      "entityId" : "Iraq"
+    },
+    {
+      "ciId": "EXP-1991-01-05-a-i0121@60:69",
+      "type": "Location",
+      "surface": "Neuchâtel",
+      "entityId" : "Neuchâtel"
+    }
+  ]
+}
