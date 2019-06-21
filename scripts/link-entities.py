@@ -48,40 +48,43 @@ def aida_disambiguate_documents(documents, gateway_port):
         }
         linked_entities = []
 
-        for mention in annotations.keySet():
+        annotations = [
+            {
+                "surface": ann.getMention(),
+                "entity_id": annotations.get(ann).getName(),
+                "normalized_name": annotations.get(ann).getNMEnormalizedName(),
+                "char_offset": ann.getCharOffset(),
+                "mention_entity_similarity": annotations.get(ann).getMentionEntitySimilarity()
+            }
+            for ann in annotations.keySet()
+        ]
 
-            annotation = annotations.get(mention)
-            entity_id = annotation.getName()
-            wikipedia_entity_id = f"http://en.wikipedia.org/wiki/{entity_id}"
-            char_offset = mention.getCharOffset()
-            char_length = mention.getCharLength()
+        for mention in document['nes']:
 
-            # uncomment for debug
-            # print(document['ft'][char_offset:char_offset + char_length])
-            # print(mention.getMention(), wikipedia_entity_id)
+            # since some character offsets are broken we rely
+            # on the surface to realign mention and disambiguations
+            matching_entity = [
+                annotation
+                for annotation in annotations
+                if annotation['surface'] == mention['surface']
+            ]
 
-            try:
-                matching_mention = [
-                    ne
-                    for ne in document['nes']
-                    if ne['lOffset'] == char_offset and
-                    ne['rOffset'] == char_offset + char_length
-                ][0]
-            except Exception:
-                print(f"error in {document['id']}")
+            if len(matching_entity) == 0:
                 continue
+            else:
+                matching_entity = matching_entity[0]
 
-            mention_id = matching_mention['id']
-            similarity = annotation.getMentionEntitySimilarity()
+            # import ipdb; ipdb.set_trace()
 
+            entity_id = matching_entity['entity_id']
             linked_entities.append(
                 {
-                    "mention_id": mention_id,
-                    "surface": matching_mention['surface'],
+                    "mention_id": mention['id'],
+                    "surface": mention['surface'],
                     "entity_id": entity_id,
-                    "entity_link": wikipedia_entity_id,
-                    "normalized_name": annotation.getNMEnormalizedName(),
-                    "mention_entity_similarity": similarity
+                    "entity_link": f"http://en.wikipedia.org/wiki/{entity_id}",
+                    "normalized_name": matching_entity['normalized_name'],
+                    "mention_entity_similarity": matching_entity["mention_entity_similarity"]
                 }
             )
         output_doc['ne_links'] = linked_entities
