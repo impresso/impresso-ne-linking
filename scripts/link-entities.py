@@ -99,7 +99,7 @@ def main():
     local_output_dir = arguments["--output-dir"]
 
     port = arguments["--gateway-port"]
-    gateway_port = 25333 if not port else port
+    gateway_port = 25333 if not port else int(port)
     print(f"Java Gateway will be using port {gateway_port}")
 
     range_start, range_end = arguments['--files-range'].split('-')
