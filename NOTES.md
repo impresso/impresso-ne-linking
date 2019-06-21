@@ -34,7 +34,7 @@ for mention in annotations.keySet():
 s3://processed-canonical-data/entities/EXP/xxx.jsonl.bz2
 
 ```json
-// confidences level ?
+  // confidences level ?
 {
   "source": "s3://processed-canonical-data/ne_mentions/EXP/599.jsonl.bz2",
   "kb": "wikipedia",

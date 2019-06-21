@@ -6,6 +6,8 @@ verify_ssl = true
 [dev-packages]
 ipython = "*"
 jupyter = "*"
+flake8 = "*"
+isort = "*"
 
 [packages]
 py4j = "*"

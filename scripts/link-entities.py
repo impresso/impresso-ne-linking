@@ -122,7 +122,7 @@ def main():
     print(f"First 10 output files: {aida_output_files[:10]}")
 
     # set to a certain number of workers
-    dask_client = Client()
+    dask_client = Client(processes=False, n_workers=8)
     print(f"{dask_client}")
 
     aida_input_bag = db.read_text(
