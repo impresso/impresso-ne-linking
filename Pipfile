@@ -8,14 +8,17 @@ ipython = "*"
 jupyter = "*"
 flake8 = "*"
 isort = "*"
+black = "*"
 
 [packages]
 py4j = "*"
-impresso-commons = {editable = true,git = "https://github.com/impresso/impresso-pycommons.git"}
-dask = {extras = ["complete"],version = "==1.1.5"}
-dask-k8 = {editable = true,git = "https://github.com/SeguinBe/dask_k8.git"}
 impresso-images = {editable = true,path = "./../impresso-images/impresso-pyimages"}
 pillow = "*"
+impresso-commons = {editable = true,git = "https://github.com/impresso/impresso-pycommons.git",ref = "v0.12.0"}
+dask-k8 = {editable = true,git = "https://github.com/impresso/dask_k8"}
 
 [requires]
 python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true
