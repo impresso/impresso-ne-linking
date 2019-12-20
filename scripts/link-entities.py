@@ -29,7 +29,7 @@ def aida_disambiguate_documents(documents, gateway_port):
     aida_server = gateway.entry_point.getAida()
 
     output = []
-    print(f"Linking partition with {len(documents)} documents")
+    print(f"Linking partition with documents [{', '.join([doc['id'] for doc in documents])}]")
 
     for document in documents:
 
@@ -77,7 +77,7 @@ def aida_disambiguate_documents(documents, gateway_port):
             )
         output_doc['ne_links'] = linked_entities
         output.append(output_doc)
-    print(f"processed partition with {len(documents)} documents")
+
     return output
 
 
@@ -95,7 +95,7 @@ def main():
         dask_client = Client(dask_scheduler_port)
     else:
         dask_client = Client()
-    print(f"{dask_client}")
+    print(f"{das}")
 
     range_start, range_end = arguments['--files-range'].split('-')
     range_start = int(range_start)
