@@ -91,8 +91,8 @@ def main():
     gateway_port = 25333 if not port else int(port)
     print(f"Java Gateway will be using port {gateway_port}")
 
-    if scheduler:
-        dask_client = Client(scheduler)
+    if dask_scheduler_port:
+        dask_client = Client(dask_scheduler_port)
     else:
         dask_client = Client()
     print(f"{client}")
