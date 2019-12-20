@@ -29,7 +29,7 @@ def aida_disambiguate_documents(documents, gateway_port):
     aida_server = gateway.entry_point.getAida()
 
     output = []
-    print(f"Linking partition with {len(documents)} documents [{', '.join([doc['id'] for doc in documents])}]")
+    print(f"Linking partition with {len(documents)} documents")
 
     for document in documents:
 
@@ -77,7 +77,7 @@ def aida_disambiguate_documents(documents, gateway_port):
             )
         output_doc['ne_links'] = linked_entities
         output.append(output_doc)
-
+    print(f"processed partition with {len(documents)} documents")
     return output
 
 
