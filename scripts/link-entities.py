@@ -95,7 +95,7 @@ def main():
         dask_client = Client(dask_scheduler_port)
     else:
         dask_client = Client()
-    print(f"{das}")
+    print(f"{dask_client}")
 
     range_start, range_end = arguments['--files-range'].split('-')
     range_start = int(range_start)
