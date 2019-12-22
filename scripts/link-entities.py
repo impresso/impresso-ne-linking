@@ -29,13 +29,14 @@ def aida_disambiguate_documents(documents, gateway_port):
     aida_server = gateway.entry_point.getAida()
 
     output = []
-    print(f"Linking partition with documents [{', '.join([doc['id'] for doc in documents])}]")
+    #print(f"Linking partition with documents [{', '.join([doc['id'] for doc in documents])}]")
 
     for document in documents:
 
         prepared_input = document['input']
         mentions = gateway.entry_point.findExtractedMentions(prepared_input)
         annotations = aida_server.disambiguate(prepared_input, mentions, "fullSettings")
+        print(annotations)
 
         output_doc = {"id": document['id'], "sys_id": "aidalight-fullSettings", "cdt": strftime("%Y-%m-%d %H:%M:%S")}
         linked_entities = []
@@ -114,10 +115,7 @@ def main():
 
     print(f"First 10 input files: {aida_input_files[:10]}")
     print(f"First 10 output files: {aida_output_files[:10]}")
-
-    # set to a certain number of workers
-    dask_client = Client(processes=False, n_workers=8)
-    print(f"{dask_client}")
+    #import ipdb; ipdb.set_trace()
 
     aida_input_bag = (
         db.read_text(

@@ -9,13 +9,14 @@ jupyter = "*"
 flake8 = "*"
 isort = "*"
 black = "*"
+ipdb = "*"
 
 [packages]
 py4j = "*"
-impresso-images = {editable = true,path = "./../impresso-images/impresso-pyimages"}
 pillow = "*"
-impresso-commons = {editable = true,git = "https://github.com/impresso/impresso-pycommons.git",ref = "v0.12.0"}
-dask-k8 = {editable = true,git = "https://github.com/impresso/dask_k8"}
+#impresso-commons = {editable = true,git = "https://github.com/impresso/impresso-pycommons.git",ref = "v0.12.0"}
+bokeh = "*"
+dask = {extras = ["complete"],version = "==2.3.0"}
 
 [requires]
 python_version = "3.6"
